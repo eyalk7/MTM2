@@ -1,1 +1,56 @@
-# This file is not empty
+def inside_contest(faculty, file_name):
+    f = open(file_name, 'r')
+    lines = f.readlines()
+    f.close()
+
+    programs = []
+    for line in lines:
+        if is_staff_choice(line, faculty):
+            programs = get_programs(line)
+            # break is not needed under the assumption there's only one staff choice for the faculty
+
+    # first faculty starts with 20 points (staff's choice)
+    # all the rest are initialized to 0
+    program_points = [20] + [0] * (len(programs) + 1)
+
+    voters = []     # IDs of students who voted already
+    for line in lines:
+        if "inside contest" in line:
+            words = line.split(' ')
+            # words = ['inside', 'contest', <student id>, <program>, <faculty>]
+            student_id = words[2]
+            if student_id not in voters:    # check the student hasn't voted already
+                voters.append(student_id)
+                program = words[3]
+                index = programs.index(program)
+                program_points[index] += 1
+
+    # get the index of the program that got the most points
+    max_points = max(program_points)
+    max_index = program_points.index(max_points)
+
+    return programs[max_index]  # return program in that index
+
+
+def get_programs(line):
+    # initialize this faculty's programs list
+    # Assumptions:
+    # 1) only one staff choice line per faculty
+    # 2) there are spaces ONLY between parameters (and in "staff choice")
+
+    words = line.split(' ')
+    # words = ['staff', 'choice', <program 1>, ..., <program n>, <faculty>]
+
+    programs = []
+    for i in range(2, len(words) - 1):
+        programs.append(words[i])
+    return programs
+
+
+def is_staff_choice(line, faculty):
+    # if the given line is a staff choice line of given faculty
+    return "staff choice" in line and faculty in line
+
+
+winner = inside_contest("ComputerScience", "vote_commands.txt")
+print(winner)
