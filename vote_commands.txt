@@ -1,0 +1,24 @@
+inside contest 0 ThreeYears ComputerScience
+inside contest 0 FourYears ComputerScience
+inside contest 1 ThreeYears ComputerScience
+inside contest 2 ThreeYears ComputerScience
+inside contest 3 ThreeYears ComputerScience
+inside contest 4 ThreeYears ComputerScience
+staff choice FourYears ThreeYears SoftwareEngineering ComputerScience
+inside contest 5 ThreeYears ComputerScience
+inside contest 6 ThreeYears ComputerScience
+inside contest 7 ThreeYears ComputerScience
+inside contest 8 ThreeYears ComputerScience
+inside contest 9 ThreeYears ComputerScience
+inside contest 10 ThreeYears ComputerScience
+inside contest 11 ThreeYears ComputerScience
+inside contest 12 ThreeYears ComputerScience
+inside contest 14 ThreeYears ComputerScience
+inside contest 15 ThreeYears ComputerScience
+inside contest 16 ThreeYears ComputerScience
+inside contest 17 ThreeYears ComputerScience
+inside contest 18 ThreeYears ComputerScience
+inside contest 19 ThreeYears ComputerScience
+inside contest 20 ThreeYears ComputerScience
+inside contest 21 ThreeYears ComputerScience
+
