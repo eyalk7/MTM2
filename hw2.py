@@ -65,7 +65,7 @@ def get_max_key(dict):
     max_points = max(program_points)
     max_index = program_points.index(max_points)
 
-    return list(dict.keys)[max_index]
+    return list(dict.keys())[max_index]
 
 
 """************************************** PROGRAM **********************************"""
