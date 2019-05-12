@@ -1,7 +1,16 @@
 import Techniovision
 
+"""************************************** FUNCTIONS **********************************"""
+
 
 def inside_contest(faculty, file_name):
+    """
+
+    :param faculty:
+    :param file_name:
+    :return:
+    """
+
     f = open(file_name, 'r')
     lines = f.readlines()
     f.close()
@@ -25,14 +34,16 @@ def inside_contest(faculty, file_name):
 
     return get_max_key(programs)   # return program with max points
 
+
 def get_programs(line):
     """
     Initialize this faculty's programs list
     Assumptions:
     1) only one staff choice line per faculty
     2) there are spaces ONLY between parameters (and in "staff choice")
+
     :param line: a string representing a line in the given text file
-    :return: A dictionary that maps each program to the amount of points it has
+    :return: A dictionary that maps each program to its amount of points
     """
     words = line.split()
     # words = ['staff', 'choice', <program 1>, ..., <program n>, <faculty>]
@@ -57,6 +68,7 @@ def get_max_key(dict):
     return list(dict.keys)[max_index]
 
 
+"""************************************** PROGRAM **********************************"""
 t = Techniovision.TechniovisionCreate()
 
 file_name = "input.txt"
@@ -81,14 +93,16 @@ for line in lines:
         study_program = words[2]
         student_faculty = words[3]
 
-        voting_faculty = faculties[study_program]
+        # if the student voted a program that doesn't represent a faculty
+        # his vote doesn't count
+        if study_program in faculties.keys():
+            voting_faculty = faculties[study_program]
+            Techniovision.TechniovisionStudentVotes(t, int(student_id),
+                                                    str(student_faculty),
+                                                    str(voting_faculty))
 
-        Techniovision.TechniovisionStudentVotes(t, int(student_id),
-                                                str(student_faculty),
-                                                str(voting_faculty))
-
+# print the winning faculty and deallocate the Techniovision object
 Techniovision.TechniovisionWinningFaculty(t)
-
 Techniovision.TechniovisionDestroy(t)
 
-
+"""************************************** END OF FILE **********************************"""
