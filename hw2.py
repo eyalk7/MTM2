@@ -5,10 +5,11 @@ import Techniovision
 
 def inside_contest(faculty, file_name):
     """
-
-    :param faculty:
-    :param file_name:
-    :return:
+    Calculates the most voted study program in given faculty
+    based on the commands in the file
+    :param faculty: Name of the faculty
+    :param file_name: Filename of file with commands
+    :return: The name of the most voted study program
     """
 
     f = open(file_name, 'r')
@@ -23,7 +24,7 @@ def inside_contest(faculty, file_name):
 
     voters = []     # IDs of students who voted already
     for line in lines:
-        if "inside contest" in line:
+        if "inside contest" in line and faculty in line:
             words = line.split()
             # words = ['inside', 'contest', <student id>, <program>, <faculty>]
             student_id = words[2]
@@ -32,7 +33,7 @@ def inside_contest(faculty, file_name):
                 program = words[3]
                 programs[program] += 1      # add a vote = 1 point
 
-    return get_max_key(programs)   # return program with max points
+    return get_max_program(programs)   # return program with max points
 
 
 def get_programs(line):
@@ -55,11 +56,12 @@ def get_programs(line):
     return programs
 
 
-def get_max_key(dict):
+def get_max_program(dict):
     """
-
-    :param dict:
-    :return:
+    Get the study program that will represent the faculty
+    :param dict: The dictionary that maps each program  in the faculty
+                 to its amount of points
+    :return: The name of the study program with the highest amount of points
     """
     program_points = list(dict.values())
     max_points = max(program_points)
@@ -90,6 +92,7 @@ for line in lines:
         # words = ["techniovision", <student_id>, <study_program>, <student_faculty>]
 
         student_id = words[1]
+
         study_program = words[2]
         student_faculty = words[3]
 
