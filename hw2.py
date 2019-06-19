@@ -48,7 +48,6 @@ def get_programs(line):
     Assumptions:
     1) only one staff choice line per faculty
     2) there are spaces ONLY between parameters (and in "staff choice")
-
     :param line: a string representing a line in the given text file
     :return: A dictionary that maps each program to its amount of points
     """
